@@ -1,9 +1,17 @@
 import React from 'react'
 
-const index = () => {
+import { AiFillInstagram, AiOutlineTwitter } from "react-icons/ai"
+
+const Footer = () => {
   return (
-    <div>index</div>
+    <div className="footer-container">
+      <p>2022 JSM Headphones All rights reserved</p>
+      <p className="icons">
+        <AiFillInstagram />
+        <AiOutlineTwitter />
+      </p>
+    </div>
   )
 }
 
-export default index
+export default Footer;

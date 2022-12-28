@@ -1,9 +1,24 @@
-import React from 'react'
+import Head from "next/head";
+import React from "react";
 
-const index = () => {
+import Footer from "../Footer";
+import Navbar from "../Navbar";
+
+const Layout = ({ children }) => {
   return (
-    <div>index</div>
-  )
-}
+    <div className="layout">
+      <Head>
+        <title>Little Jacob | Store</title>
+      </Head>
+      <header>
+        <Navbar />
+      </header>
+      <main className="main-container">{children}</main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
+};
 
-export default index
+export default Layout;
