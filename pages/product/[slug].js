@@ -10,8 +10,14 @@ import {
 } from "react-icons/ai";
 import { Product } from "../../components";
 
+import { useDispatch, useSelector } from "react-redux";
+
 const ProductDetails = ({ product, products }) => {
   const { name, image, details, price } = product;
+  const dispatch = useDispatch();
+  const { cartItems, showCart, totalQuantities, qty } = useSelector(
+    (state) => state.cart
+  );
 
   const [index, setIndex] = useState(0);
   return (
@@ -55,17 +61,27 @@ const ProductDetails = ({ product, products }) => {
           <div className="quantity">
             <h3>Quantity: </h3>
             <p className="quantity-desc">
-              <span className="minus" onClick="">
+              <span
+                className="minus"
+                onClick={() => dispatch({ type: "decrement" })}
+              >
                 <AiOutlineMinus />
               </span>
-              <span className="num">{0}</span>
-              <span className="plus" onClick="">
+              <span className="num">{qty}</span>
+              <span
+                className="plus"
+                onClick={() => dispatch({ type: "increment" })}
+              >
                 <AiOutlinePlus />
               </span>
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick="">
+            <button
+              type="button"
+              className="add-to-cart"
+              onClick={() => dispatch({ type: "addToCart", product: product })}
+            >
               Add to Cart
             </button>
             <button type="button" className="buy-now" onClick="">
